@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+disnake-jishaku = "==2.6.5"
+disnake = "==2.6.0"
+psutil = "==5.9.2"
+rich = "==12.6.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
