@@ -5,6 +5,7 @@ from aiohttp import ClientSession
 from disnake.ext.commands import AutoShardedBot
 from disnake import utils
 
+from context import Context
 from log import get_logger
 
 logger = get_logger(__name__)
@@ -15,6 +16,7 @@ class DiscordBot(AutoShardedBot):
         self.session = bot_session
         self.config = bot_config
         self.log = logger
+        self.context = Context
         self.ready_at_once: bool = False
         self.guilds_on_startup: Union[None, int] = None
         super().__init__(**kwargs)
@@ -38,6 +40,9 @@ class DiscordBot(AutoShardedBot):
 
     async def on_connect(self) -> None:
         self.log.info("Connected to Discord API")
+
+    async def get_context(self, message, cls=None):
+        return await super().get_context(message, cls=Context)
 
     def load_all_extensions(self, paths: list, custom: list) -> None:
         total = 0
