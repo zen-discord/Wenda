@@ -2,3 +2,4 @@ disnake
 disnake-jishaku
 rich
 psutil
+aiohttp
