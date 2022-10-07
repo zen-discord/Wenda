@@ -18,7 +18,7 @@ class DiscordBot(AutoShardedBot):
         self.session = http_session
         self.config = bot_config
         self.log = logger
-        self.context = Context
+        self.ctx = Context
         self.ready_at_once: bool = False
         self.guilds_on_startup: Union[None, int] = None
         super().__init__(**kwargs)
