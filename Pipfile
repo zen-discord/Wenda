@@ -8,6 +8,7 @@ disnake-jishaku = "==2.6.5"
 disnake = "==2.6.0"
 psutil = "==5.9.2"
 rich = "==12.6.0"
+pylint = "*"
 
 [dev-packages]
 

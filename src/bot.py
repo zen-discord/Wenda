@@ -10,11 +10,9 @@ from log import Logger
 
 
 class DiscordBot(AutoShardedBot):
-    def __init__(self,
-                 http_session: ClientSession,
-                 bot_config,
-                 logger: Logger,
-                 **kwargs) -> None:
+    def __init__(
+        self, http_session: ClientSession, bot_config, logger: Logger, **kwargs
+    ) -> None:
         self.session = http_session
         self.config = bot_config
         self.log = logger
@@ -24,13 +22,10 @@ class DiscordBot(AutoShardedBot):
         super().__init__(**kwargs)
 
     async def __aenter__(self):
-        self.load_all_extensions(
-            ["applications", "internal"],
-            ["jishaku"]
-        )
+        self.load_all_extensions(["applications", "internal"], ["jishaku"])
         return super()
 
-    async def __aexit__(self) -> None:
+    async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
         await self.session.close()
         self.log.info("Bye-bye!")
 
@@ -69,4 +64,4 @@ class DiscordBot(AutoShardedBot):
                 self.log.error(format_exc())
                 continue
 
-        self.log.info(f'Loaded {loaded} out of {total} modules')
+        self.log.info(f"Loaded {loaded} out of {total} modules")

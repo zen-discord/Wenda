@@ -5,9 +5,10 @@ import config
 
 
 class Context(_Context):
-    def embed(*arg, **kwargs) -> Embed:
-        kwargs.setdefault('colour', config.Branding.Сolours.main)
-        return Embed(*arg, **kwargs)
+    @staticmethod
+    def embed(**kwargs) -> Embed:
+        kwargs.setdefault("colour", config.Branding.colours.main)
+        return Embed(**kwargs)
 
     @staticmethod
     def error(title: str, message: str) -> str:

@@ -1,8 +1,8 @@
 import sys
 
 import asyncio
-from aiohttp import ClientSession
 from os import environ
+from aiohttp import ClientSession
 from disnake import Intents
 from disnake.ext.commands import when_mentioned_or
 
@@ -23,7 +23,7 @@ async def main():
         src.instance = DiscordBot(
             bot_config=config,
             http_session=session,
-            logger=get_logger('bot'),
+            logger=get_logger("bot"),
             intents=Intents.all(),
             max_messages=100,
             activity=config.activity,

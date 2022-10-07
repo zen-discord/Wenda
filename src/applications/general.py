@@ -10,7 +10,9 @@ class General(Cog):
 
     @slash_command()
     async def ping(self, interaction: CommandInteraction) -> None:
-        await interaction.response.send_message(f"🏓 `{round(self.bot.latency * 1000, 2)}ms`")
+        await interaction.response.send_message(
+            f"🏓 `{round(self.bot.latency * 1000, 2)}ms`"
+        )
 
 
 def setup(bot: src.instance):

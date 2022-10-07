@@ -4,6 +4,7 @@ from disnake.ext.commands import Cog
 import src
 
 
+# It's a cog that handles events
 class Events(Cog):
     def __init__(self, bot: src.instance) -> None:
         self.bot = bot
@@ -18,11 +19,11 @@ class Events(Cog):
             .add_field(
                 name="Пользователей",
                 value=f"Участников: {len(list(filter(lambda x: not x.bot, guild.members)))}"
-                      f"\nБотов: {len(list(filter(lambda x: x.bot, guild.members)))}",
+                f"\nБотов: {len(list(filter(lambda x: x.bot, guild.members)))}",
             )
             .set_footer(text=f"Теперь у меня {len(self.bot.guilds)} • {guild.id}")
         )
-        channel = self.bot.get_channel(self.bot.config.channels['guilds'])
+        channel = self.bot.get_channel(self.bot.config.channels["guilds"])
         await channel.send(embed=embed)
 
     @Cog.listener()
@@ -33,7 +34,7 @@ class Events(Cog):
             .add_field(name="Название", value=guild.name)
             .set_footer(text=f"Теперь у меня {len(self.bot.guilds)} • {guild.id}")
         )
-        channel = self.bot.get_channel(self.bot.config.channels['guilds'])
+        channel = self.bot.get_channel(self.bot.config.channels["guilds"])
         await channel.send(embed=embed)
 
 
