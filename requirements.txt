@@ -1,5 +1,5 @@
 disnake~=2.6.0
-disnake-jishaku
+disnake-jishaku~=2.6.0
 rich~=12.6.0
-psutil
+psutil~=5.9.2
 aiohttp~=3.8.3

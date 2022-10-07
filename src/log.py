@@ -20,27 +20,26 @@ class Logger:
         self.format = log_format
         self.time_format = time_format
 
+    def get_time(self):
+        return datetime.datetime.now().strftime(self.time_format)
+
     def info(self, message) -> None:
-        time = datetime.datetime.now().strftime(self.time_format)
-        log = self.format.substitute(time=time, process=self.name, level=COLORED_LEVELS['info'],
+        log = self.format.substitute(time=self.get_time(), process=self.name, level=COLORED_LEVELS['info'],
                                      message=f'[white]{message}[/white]')
         print(f"[gray]{log}[/gray]")
 
     def debug(self, message) -> None:
-        time = datetime.datetime.now().strftime(self.time_format)
-        log = self.format.substitute(time=time, process=self.name, level=COLORED_LEVELS['debug'],
+        log = self.format.substitute(time=self.get_time(), process=self.name, level=COLORED_LEVELS['debug'],
                                      message=f'[white]{message}[/white]')
         print(f"[gray]{log}[/gray]")
 
     def warn(self, message) -> None:
-        time = datetime.datetime.now().strftime(self.time_format)
-        log = self.format.substitute(time=time, process=self.name, level=COLORED_LEVELS['warn'],
+        log = self.format.substitute(time=self.get_time(), process=self.name, level=COLORED_LEVELS['warn'],
                                      message=f'[white]{message}[/white]')
         print(f"[gray]{log}[/gray]")
 
     def error(self, message) -> None:
-        time = datetime.datetime.now().strftime(self.time_format)
-        log = self.format.substitute(time=time, process=self.name, level=COLORED_LEVELS['error'],
+        log = self.format.substitute(time=self.get_time(), process=self.name, level=COLORED_LEVELS['error'],
                                      message=f'[white]{message}[/white]')
         print(f"[gray]{log}[/gray]")
 

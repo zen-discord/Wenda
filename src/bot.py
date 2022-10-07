@@ -6,14 +6,16 @@ from disnake.ext.commands import AutoShardedBot
 from disnake import utils
 
 from context import Context
-from log import get_logger
-
-logger = get_logger(__name__)
+from log import Logger
 
 
 class DiscordBot(AutoShardedBot):
-    def __init__(self, bot_session: ClientSession, bot_config, **kwargs) -> None:
-        self.session = bot_session
+    def __init__(self,
+                 http_session: ClientSession,
+                 bot_config,
+                 logger: Logger,
+                 **kwargs) -> None:
+        self.session = http_session
         self.config = bot_config
         self.log = logger
         self.context = Context
@@ -41,7 +43,7 @@ class DiscordBot(AutoShardedBot):
     async def on_connect(self) -> None:
         self.log.info("Connected to Discord API")
 
-    async def get_context(self, message, cls=None):
+    async def get_context(self, message, cls=None) -> Context:
         return await super().get_context(message, cls=Context)
 
     def load_all_extensions(self, paths: list, custom: list) -> None:
